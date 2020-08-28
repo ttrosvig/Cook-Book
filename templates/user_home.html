@@ -2,9 +2,23 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1 class="display-1">User home! </h1>
+    <h1 class="display-4">Welcome, {{user.username}}! </h1>
+
+    {% for recipe in user.recipes %}
+        <div class="my-3 p-2" style="border: 1px solid black;">
+            <span class="m-0">{{recipe.title}}</span>
+
+            <a class="mx-1" href="/recipes/{{recipe.id}}/edit">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+
+            <a class="text-danger float-right mx-3" href="/recipes/{{recipe.id}}delete">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </div>
+    {% endfor %}
 
     <a class="btn btn-danger" href="/logout">Logout</a>
 
-    <a class="btn btn-primary" href="/home/{{user.id}}/recipes/add">Add Recipe</a>
+    <a class="btn btn-primary" href="/recipes/add">Add Recipe</a>
 {% endblock %}

@@ -75,20 +75,40 @@ def logout():
 
     return redirect('/login')
 
-@app.route('/home/<int:user_id>/recipes/add', methods=['GET', 'POST'])
-def add_recipe(user_id):
+@app.route('/recipes/add', methods=['GET', 'POST'])
+def add_recipe():
     form = AddRecipeForm()
 
     if form.validate_on_submit():
         title = form.title.data
         body = form.body.data
 
-        recipe = Recipe(user_id=user_id, title=title, body=body)
+        recipe = Recipe(user_id=session['user_id'], title=title, body=body)
 
         db.session.add(recipe)
         db.session.commit()
 
-        return redirect(f"/home/{user_id}")
+        return redirect(f"/home/{session['user_id']}")
 
     else:
-        return render_template('add_recipe.html', form=form, user_id=user_id)
+        return render_template('add_recipe.html', form=form, user_id=session['user_id'])
+
+@app.route('/recipes/<int:recipe_id>/edit')
+def edit_recipe(recipe_id):
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    recipe = Recipe.query.get(recipe_id)
+
+    form = AddRecipeForm(obj=recipe)
+
+    if form.validate_on_submit():
+        title = form.body.data
+        body = form.body.data
+
+        db.session.commit()
+
+        return redirect(f"/home/{session['user_id']}")
+
+    else:
+        return render_template('add_recipe.html', form=form, user_id=session['user_id'])
