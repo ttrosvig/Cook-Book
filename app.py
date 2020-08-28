@@ -112,3 +112,15 @@ def edit_recipe(recipe_id):
 
     else:
         return render_template('add_recipe.html', form=form, user_id=session['user_id'])
+
+@app.route('/recipes/<int:recipe_id>/delete')
+def delete_recipe(recipe_id):
+    if 'user_id' not in session:
+        return redirect('/login')
+        
+    recipe = Recipe.query.get(recipe_id)
+
+    db.session.delete(recipe)
+    db.session.commit()
+
+    return redirect(f"/home/{session['user_id']}")
