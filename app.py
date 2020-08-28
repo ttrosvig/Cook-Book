@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, session
 from models import db, connect_db, User, Recipe
-from forms import LoginForm, RegisterForm
+from forms import LoginForm, RegisterForm, AddRecipeForm
 
 app = Flask(__name__)
 
@@ -39,8 +39,8 @@ def register():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
-    if 'username' in session:
-        return redirect('/login')
+    if 'user_id' in session:
+        return redirect(f"/home/{session['user_id']}")
 
     form = LoginForm()
 
@@ -74,3 +74,21 @@ def logout():
     session.pop('user_id')
 
     return redirect('/login')
+
+@app.route('/home/<int:user_id>/recipes/add', methods=['GET', 'POST'])
+def add_recipe(user_id):
+    form = AddRecipeForm()
+
+    if form.validate_on_submit():
+        title = form.title.data
+        body = form.body.data
+
+        recipe = Recipe(user_id=user_id, title=title, body=body)
+
+        db.session.add(recipe)
+        db.session.commit()
+
+        return redirect(f"/home/{user_id}")
+
+    else:
+        return render_template('add_recipe.html', form=form, user_id=user_id)

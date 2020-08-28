@@ -28,6 +28,8 @@ class User(db.Model):
     last_name = db.Column(db.String,
         nullable=False)
 
+    recipes = db.relationship('Recipe', backref='users', cascade="all, delete")
+
     @classmethod
     def register(cls, username, password, first_name, last_name):
 
