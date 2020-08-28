@@ -4,6 +4,17 @@
 {% block content %}
     <h1 class="display-4">Welcome, {{user.username}}! </h1>
 
+    <div class="jumbotron d-flex justify-content-center flex-column">
+        <h3>Need a yummy dessert suggestion?</h3>
+
+        <button id="get-recipe" class="btn btn-success my-3">Click me for a recipe</button>
+
+        <div id="information-area">
+        </div>
+
+        <div id="link-area"></div>
+    </div>
+
     {% for recipe in user.recipes %}
         <div class="my-3 p-2" style="border: 1px solid black;">
             <span class="m-0">{{recipe.title}}</span>
