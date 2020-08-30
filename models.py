@@ -73,5 +73,3 @@ class Recipe(db.Model):
 
     body = db.Column(db.Text,
         nullable=False)
-
-    rating = db.Column(db.Integer)

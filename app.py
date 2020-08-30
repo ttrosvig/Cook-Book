@@ -69,14 +69,24 @@ def user_home(user_id):
         return redirect('/login')
 
     user = User.query.get(user_id)
+    recipe_list = Recipe.query.order_by(Recipe.title)
 
-    return render_template('user_home.html', user=user)
+    return render_template('user_home.html', user=user, recipe_list=recipe_list)
 
 @app.route('/logout')
 def logout():
     session.pop('user_id')
 
     return redirect('/login')
+
+@app.route('/recipes/<int:recipe_id>')
+def view_recipe(recipe_id):
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    recipe = Recipe.query.get(recipe_id)
+
+    return render_template('view_recipe.html', recipe=recipe)
 
 @app.route('/recipes/add', methods=['GET', 'POST'])
 def add_recipe():

@@ -18,24 +18,26 @@
             <div id="link-area"></div>
         </div>
 
-        <div>
-            <span class="recipe-title text-primary">Recipes</span>
+        <div class="title container">
+            <span class="recipe-title text-primary">My Recipes</span>
 
-            <a class="btn btn-sm btn-outline-success ml-2 white-button" href="/recipes/add">
+            <a class="btn btn-sm btn-outline-success ml-2 white-button mb-2" href="/recipes/add">
                 <i class="fas fa-plus"></i>
             </a>
         </div>
 
         <ul class="list-group my-3">
-            {% for recipe in user.recipes %}
+            {% for recipe in recipe_list %}
                 <li class="list-group-item">
-                    <span class="m-0 float-left">{{recipe.title}}</span>
+                    <span class="m-0 float-left">
+                        {{recipe.title}}
+                    </span>
 
                     <a class="mx-2 float-left" href="/recipes/{{recipe.id}}/edit">
-                        <i class="fas fa-pencil-alt"></i>
+                        <i class="far fa-eye"></i>
                     </a>
 
-                    <a class="text-danger float-right mx-3" href="/recipes/{{recipe.id}}/delete">
+                    <a class="text-danger float-right mx-1" href="/recipes/{{recipe.id}}/delete">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </li>
