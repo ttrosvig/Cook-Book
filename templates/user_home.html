@@ -2,34 +2,44 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1 class="display-4">Welcome, {{user.username}}! </h1>
+    <a class="float-right m-2 logout" href="/logout">Logout</a>
 
-    <div class="jumbotron d-flex justify-content-center flex-column">
-        <h3>Need a yummy dessert suggestion?</h3>
+    <div class="container group info">
+        <h1 class="display-5 text-center my-3">Bon appétit, {{user.username}}! </h1>
 
-        <button id="get-recipe" class="btn btn-success my-3">Click me for a recipe</button>
+        <div class="jumbotron d-flex justify-content-center flex-column text-center">
+            <h3>Need a yummy dessert suggestion?</h3>
 
-        <div id="information-area">
+            <button id="get-recipe" class="btn btn-success my-3">Click me for a recipe</button>
+
+            <div id="information-area">
+            </div>
+
+            <div id="link-area"></div>
         </div>
 
-        <div id="link-area"></div>
+        <div>
+            <span class="recipe-title text-primary">Recipes</span>
+
+            <a class="btn btn-sm btn-outline-success ml-2 white-button" href="/recipes/add">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+
+        <ul class="list-group my-3">
+            {% for recipe in user.recipes %}
+                <li class="list-group-item">
+                    <span class="m-0 float-left">{{recipe.title}}</span>
+
+                    <a class="mx-2 float-left" href="/recipes/{{recipe.id}}/edit">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+
+                    <a class="text-danger float-right mx-3" href="/recipes/{{recipe.id}}/delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
-
-    {% for recipe in user.recipes %}
-        <div class="my-3 p-2" style="border: 1px solid black;">
-            <span class="m-0">{{recipe.title}}</span>
-
-            <a class="mx-1" href="/recipes/{{recipe.id}}/edit">
-                <i class="fas fa-pencil-alt"></i>
-            </a>
-
-            <a class="text-danger float-right mx-3" href="/recipes/{{recipe.id}}/delete">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-    {% endfor %}
-
-    <a class="btn btn-danger" href="/logout">Logout</a>
-
-    <a class="btn btn-primary" href="/recipes/add">Add Recipe</a>
 {% endblock %}

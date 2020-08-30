@@ -1,3 +1,53 @@
 ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.info {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    left: 25%;
+}
+
+.recipe-title {
+    font-size: 2em !important;
+    color: white !important;
+}
+
+.logout {
+    font-size: 1.5em;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    position: absolute;
+    margin: 20px !important;
+}
+
+.white-button {
+    color: white !important;
+}
+
+.group {
+    margin: 50px auto;
+    width: 50%;
 }

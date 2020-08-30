@@ -13,6 +13,9 @@ connect_db(app)
 
 @app.route('/')
 def home():
+    if "user_id" in session:
+        return redirect(f"/home/{session['user_id']}")
+        
     return render_template('index.html')
 
 @app.route('/register', methods=["GET", "POST"])

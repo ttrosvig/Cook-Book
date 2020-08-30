@@ -8,6 +8,7 @@ $("#get-recipe").on("click", async function () {
     $info = $("#information-area");
 
     $info.empty();
+    $('#link-area').empty()
 
     $info.append(title);
     

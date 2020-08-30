@@ -2,33 +2,35 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <h1 class="display-3">Register</h1>
-    <p>
-    Register or <a href="/login">login</a> with an account.
-    </p>
-
-    <form method="POST">
-        {{ form.hidden_tag() }}
-
-        {% for field in form.errors %}
-        <div class="alert alert-danger">
-            <ul>
-            {% for error in form.errors[field] %}
-                <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
-        </div>
-        {% endfor %}
-
-        {% for field in form 
-        if field.widget.input_type != 'hidden' %}
+    <div class="info group">
+        <h1 class="display-3">Register</h1>
         <p>
-            {{field.label}}
-            {{field(class_='form-control shadow')}}
+        Register or <a href="/login">login</a> with an account.
         </p>
-        {% endfor %}
-        <div class="text-right">
-        <button type="submit" class="btn btn-primary shadow">Register</button>
-        </div>
-    </form>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {% for field in form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                {% for error in form.errors[field] %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+            {% for field in form 
+            if field.widget.input_type != 'hidden' %}
+            <p>
+                {{field.label(class_='float-left')}}
+                {{field(class_='form-control shadow')}}
+            </p>
+            {% endfor %}
+            <div class="text-right">
+            <button type="submit" class="btn btn-primary shadow">Register</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
