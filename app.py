@@ -124,7 +124,7 @@ def add_recipe():
     else:
         return render_template('add_recipe.html', form=form, user_id=session['user_id'])
 
-@app.route('/recipes/<int:recipe_id>/edit')
+@app.route('/recipes/<int:recipe_id>/edit', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     """Displays a form with values inserted to be edited"""
 
@@ -137,15 +137,18 @@ def edit_recipe(recipe_id):
     form = AddRecipeForm(obj=recipe)
 
     if form.validate_on_submit():
-        title = form.body.data
+        title = form.title.data
         body = form.body.data
+
+        recipe.title = title
+        recipe.body = body
 
         db.session.commit()
 
         return redirect(f"/home/{session['user_id']}")
 
     else:
-        return render_template('add_recipe.html', form=form, user_id=session['user_id'])
+        return render_template('edit_recipe.html', form=form, user_id=session['user_id'])
 
 @app.route('/recipes/<int:recipe_id>/delete')
 def delete_recipe(recipe_id):
