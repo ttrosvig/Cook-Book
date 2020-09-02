@@ -2,10 +2,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <a class="float-right m-2 logout" href="/logout">Logout</a>
+    <a class="float-right white m-2 logout" href="/logout">Logout</a>
 
     <div class="container group info">
-        <h1 class="display-5 text-center my-3">Bon appétit, {{user.username}}! </h1>
+        <h1 class="display-5 text-center white my-3">Bon appétit, {{user.username}}! </h1>
 
         <div class="jumbotron d-flex justify-content-center flex-column text-center">
             <h3>Need a yummy dessert suggestion?</h3>
@@ -19,9 +19,9 @@
         </div>
 
         <div class="title container">
-            <span class="recipe-title text-primary">My Recipes</span>
+            <span class="recipe-title">My Recipes</span>
 
-            <a class="btn btn-sm btn-outline-success ml-2 white-button mb-2" href="/recipes/add">
+            <a class="btn btn-sm btn-outline-primary ml-2 mb-2" href="/recipes/add">
                 <i class="fas fa-plus"></i>
             </a>
         </div>

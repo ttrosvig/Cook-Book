@@ -1,4 +1,4 @@
-const KEY = '76d7a5ae655a48daab0f3fcbd50a5a28';
+const KEY = '76d7a5ae655a48daab0f3fcbd50a5a28'
 
 // Listen for a click on the get-recipe button
 $("#get-recipe").on("click", async function () {

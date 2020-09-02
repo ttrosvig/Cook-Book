@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="info group">
-        <h1 class="display-3">Add a Recipe</h1>
+        <h1 class="display-3 white">Add a Recipe</h1>
 
         <form method="POST">
             {{ form.hidden_tag() }}
@@ -20,7 +20,7 @@
 
             {% for field in form 
             if field.widget.input_type != 'hidden' %}
-            <p>
+            <p class="white">
                 {{field.label(class_='float-left')}}
                 {{field(class_='form-control shadow')}}
             </p>
@@ -28,7 +28,7 @@
             <div class="text-right">
                 <button type="submit" class="btn btn-primary shadow">Add recipe</button>
 
-                <a class="btn btn-outline-secondary" href="/home/{{user_id}}">Cancel</a>
+                <a class="btn btn-outline-primary white" href="/home/{{user_id}}">Cancel</a>
             </div>
         </form>
     </div>

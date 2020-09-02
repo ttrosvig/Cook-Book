@@ -3,9 +3,9 @@
 
 {% block content %}
     <div class="info group">
-        <h1 class="display-3">Register</h1>
-        <p>
-        Register or <a href="/login">login</a> with an account.
+        <h1 class="display-3 white">Register</h1>
+        <p class="white">
+        Register or <a class="white" href="/login">login</a> with an account.
         </p>
 
         <form method="POST">
@@ -23,7 +23,7 @@
 
             {% for field in form 
             if field.widget.input_type != 'hidden' %}
-            <p>
+            <p class="white">
                 {{field.label(class_='float-left')}}
                 {{field(class_='form-control shadow')}}
             </p>
