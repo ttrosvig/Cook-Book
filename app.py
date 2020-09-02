@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, session
 from models import db, connect_db, User, Recipe
 from forms import LoginForm, RegisterForm, AddRecipeForm
@@ -6,7 +7,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///recipes_db'
 
-app.config['SECRET_KEY'] = 'SECRET'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'Tr1stanT')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 connect_db(app)
