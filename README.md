@@ -1,6 +1,6 @@
 # The Cook Book
 
-This is an app that allows a user to securely log in, view, add, update and delete their recipes or recieve random recipe suggestions for those just wanting to try something new.
+This is an app that allows a user to securely log in, view, add, update and delete their recipes or recieve random recipe suggestions for those just wanting to try something new. Try it out [here](https://recipe-book-capstone1.herokuapp.com/)!
 
 ### Tools
 This app is built with Flask, HTML, CSS, JS, Bootstrap, and jQuery. PostgreSQL is used as the RDBMS, with Flask-SQLAlchemy working behind the scenes. Flask-Bcrypt is used to hash passwords and keep the login secure, as well as manage authentication and registration. Lastly, WTForms is used for form validation and Heroku for deployment.
