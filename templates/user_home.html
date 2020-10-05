@@ -33,13 +33,15 @@
                         {{recipe.title}}
                     </span>
 
-                    <a class="mx-2 float-left" href="/recipes/{{recipe.id}}/edit">
-                        <i class="far fa-eye"></i>
-                    </a>
-
-                    <a class="text-danger float-right mx-1" href="/recipes/{{recipe.id}}/delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
+                    <div>
+                        <a class="mx-2 float-left" href="/recipes/{{recipe.id}}/edit">
+                            <i class="far fa-eye"></i>
+                        </a>
+    
+                        <a class="text-danger float-right mx-1" href="/recipes/{{recipe.id}}/delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
